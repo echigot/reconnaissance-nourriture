@@ -17,13 +17,13 @@ do
     echo $k
     if [ $k -lt 10 ] 
     then 
-    	new=$(printf "${1}.00%d.jpg" "$k")
+    	new=$(printf "${1}00%d.jpg" "$k")
     elif [ $k -lt 100 ] 
     then 
-    	new=$(printf "${1}.0%d.jpg" "$k")
+    	new=$(printf "${1}0%d.jpg" "$k")
     elif [ $k -lt 1000 ] 
     then 
-    	new=$(printf "${1}.%d.jpg" "$k")
+    	new=$(printf "${1}%d.jpg" "$k")
     else 
 	echo ""
     fi
