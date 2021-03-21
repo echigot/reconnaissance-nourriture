@@ -31,3 +31,16 @@ do
     k=$(( $k+1 ))
 done
 
+
+a2=`ls`
+k2=1
+for i in $a2
+do
+    echo -n "k = "
+    echo $k2
+    new=$(printf "${1}%d.jpg" "$k2")
+    mv "$i" "$new"
+    k2=$(( $k2+1 ))
+
+done
+
