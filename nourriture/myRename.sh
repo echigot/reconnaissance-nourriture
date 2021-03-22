@@ -1,14 +1,21 @@
 #!/bin/bash
-cd train/FranceTest
 
-if [ $# -eq 0 ] 
+
+if [ $# -ne 2 ] 
 then
 	echo ""
-	echo "        1 argument nécessaire : nom de rangement des fichiers"
-	echo "        usage : ./myRename.sh france"
+	echo " 2 arguments nécessaires :"
+	echo " 	1) nom du répertoire où trier"
+	echo " 	2) nom choisi pour ranger les fichiers"
+	echo ""
+	echo " usage exemple : ./myRename.sh train/FranceTest france"
 	exit 1
 fi 
-name=$1
+
+
+cd $1
+
+name=$2
 a=`ls`
 k=1
 for i in $a
@@ -17,13 +24,13 @@ do
     echo $k
     if [ $k -lt 10 ] 
     then 
-    	new=$(printf "${1}00%d.jpg" "$k")
+    	new=$(printf "${2}00%d.jpg" "$k")
     elif [ $k -lt 100 ] 
     then 
-    	new=$(printf "${1}0%d.jpg" "$k")
+    	new=$(printf "${2}0%d.jpg" "$k")
     elif [ $k -lt 1000 ] 
     then 
-    	new=$(printf "${1}%d.jpg" "$k")
+    	new=$(printf "${2}%d.jpg" "$k")
     else 
 	echo ""
     fi
@@ -38,7 +45,7 @@ for i in $a2
 do
     echo -n "k = "
     echo $k2
-    new=$(printf "${1}%d.jpg" "$k2")
+    new=$(printf "${2}%d.jpg" "$k2")
     mv "$i" "$new"
     k2=$(( $k2+1 ))
 
